@@ -5,6 +5,8 @@ A modern, responsive, and interactive coffee shop website for Amber &amp; Roast.
 
 Amber & Roast is a modern and user-friendly website designed for a specialty coffee shop established in Istanbul in 2018. This project combines an aesthetic user interface with a fluid user experience, emphasizing the "Every Sip Has a Story" philosophy.
 
+![App Screenshot](image.png)
+
 ## ✨ Features
 - **Fully Responsive Design:** Optimized for seamless viewing on desktops, tablets, and mobile devices.
 - **Scroll Reveal Animations:** Content gracefully fades into view as the user scrolls, powered by the Intersection Observer API.
