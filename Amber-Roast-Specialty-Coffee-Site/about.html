@@ -1,0 +1,878 @@
+﻿<!DOCTYPE html> <!-- HTML5 belgesi oldugunu belirtir. -->
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" /> <!-- UTF-8 karakter setini kullanir. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Mobil cihazlara uygun olcekleme ayarlar. -->
+  <meta name="description" content="Amber & Roast'un hikayesini keşfedin — değerlerimiz, yolculuğumuz ve kahvenizi hazırlayan tutkulu ekibimiz." />
+  <!-- Arama motoru aciklamasini belirler. -->
+  <title>Hakkımızda | Amber &amp; Roast</title> <!-- Sekme basligini belirler. -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" /> <!-- Sekme simgesini tanimlar. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- Google Fonts icin erken baglanti kurar. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Font dosyalarina erken baglanti acip CORS tanir. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /> <!-- Sayfada kullanilan fontlari yukler. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Ikon kutuphanesini sayfaya ekler. -->
+  <link rel="stylesheet" href="css/style.css" /> <!-- Ortak site stillerini baglar. -->
+
+  <!-- Dahili CSS — about sayfasina ozel -->
+  <style>
+    /* About sayfasina ozel stilleri tanimlar. */
+    .page-banner {
+      /* Sayfa banner kutusunu hedefler. */
+      background: linear-gradient(135deg, #1e0f05 0%, #5a320a 100%);
+      /* Banner arka planina gradyan verir. */
+      padding: 9rem 2rem 4rem;
+      /* Banner ic bosluklarini ayarlar. */
+      text-align: center;
+      /* Banner icerigini ortalar. */
+    }
+
+    .page-banner h1 {
+      /* Banner basligini hedefler. */
+      font-family: 'Playfair Display', serif;
+      /* Playfair Display yazı tipini seçer, yüklü değilse serif kullanır. */
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      /* Baslik boyutunu duyarlilastirir. */
+      color: #f5ebe0;
+      /* Baslik rengini belirler. */
+      margin-bottom: 0.5rem;
+      /* Baslik altina bosluk ekler. */
+    }
+
+    .page-banner p {
+      /* Banner aciklama metnini hedefler. */
+      color: #c9a77a;
+      /* Aciklama metni rengini belirler. */
+      font-size: 1.1rem;
+      /* Aciklama metni boyutunu ayarlar. */
+    }
+
+    /* Hikaye bolumu */
+    .story-grid {
+      /* Hikaye bolumu icerik duzenini hedefler. */
+      display: flex;
+      /* Icerigi esnek duzende dizer. */
+      align-items: center;
+      /* Icerikleri dikeyde ortalar. */
+      gap: 5rem;
+      /* Sutunlar arasi bosluk ayarlar. */
+    }
+
+    .story-img-wrap {
+      /* Hikaye gorsel kapsayicisini hedefler. */
+      position: relative;
+      /* Rozet icin konumlama referansi saglar. */
+      flex: 0 0 45%;
+      /* Gorsel alaninin oranini belirler. */
+      max-width: 45%;
+      /* Maksimum genisligi sinirlar. */
+    }
+
+    .story-img {
+      /* Hikaye gorselini hedefler. */
+      width: 100%;
+      /* Gorselin genisligini konteynira uyarlar. */
+      height: 500px;
+      /* Gorsel yuksekligini belirler. */
+      object-fit: cover;
+      /* Gorselin kirpilarak kaplamasini saglar. */
+      border-radius: 20px;
+      /* Kenarlari yuvarlatir. */
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      /* Gorsele golge ekler. */
+    }
+
+    .story-badge {
+      /* Hikaye rozetini hedefler. */
+      position: absolute;
+      /* Rozeti gorsel ustune yerlestirir. */
+      bottom: -1.5rem;
+      /* Rozeti alta dogru kaydirir. */
+      right: -1.5rem;
+      /* Rozeti saga dogru kaydirir. */
+      background: linear-gradient(135deg, #c07c40, #e8a95e);
+      /* Rozet arka plan gradyanini belirler. */
+      color: #fff;
+      /* Rozet yazi rengini beyaz yapar. */
+      border-radius: 50%;
+      /* Rozeti daire yapar. */
+      width: 110px;
+      /* Rozet genisligini belirler. */
+      height: 110px;
+      /* Rozet yuksekligini belirler. */
+      display: flex;
+      /* Rozet iceriğini flex yapar. */
+      flex-direction: column;
+      /* Icerigi dikey dizer. */
+      align-items: center;
+      /* Icerigi yatay ortalar. */
+      justify-content: center;
+      /* Icerigi dikey ortalar. */
+      text-align: center;
+      /* Yazi hizasini ortalar. */
+      box-shadow: 0 8px 24px rgba(192, 124, 64, 0.4);
+      /* Rozete golge ekler. */
+      border: 4px solid #fdf8f3;
+      /* Rozete dis cizgi ekler. */
+    }
+
+    .story-badge .num {
+      /* Rozet sayisini hedefler. */
+      font-family: 'Playfair Display', serif;
+      /* Playfair Display yazı tipini seçer, yüklü değilse serif kullanır. */
+      font-size: 1.8rem;
+      /* Sayi boyutunu ayarlar. */
+      font-weight: 700;
+      /* Sayi kalinligini artirir. */
+      line-height: 1;
+      /* Satir yuksekligini sikistirir. */
+    }
+
+    .story-badge .lbl {
+      /* Rozet etiket metnini hedefler. */
+      font-size: 0.68rem;
+      /* Etiket metin boyutunu ayarlar. */
+      font-weight: 600;
+      /* Etiket kalinligini belirler. */
+      letter-spacing: 0.05em;
+      /* Harf araligini artirir. */
+      text-transform: uppercase;
+      /* Metni buyuk harfe cevirir. */
+      opacity: 0.9;
+      /* Metni hafif saydam yapar. */
+    }
+
+    /* Degerler */
+    .values-grid {
+      /* Degerler gridini hedefler. */
+      display: grid;
+      /* Grid duzeni kurar. */
+      grid-template-columns: repeat(3, 1fr);
+      /* Uc esit sutun olusturur. */
+      gap: 2rem;
+      /* Grid bosluklarini belirler. */
+      margin-top: 1rem;
+      /* Ustten bosluk ekler. */
+    }
+
+    .value-card {
+      /* Deger kartini hedefler. */
+      background: #fff;
+      /* Kart arka planini beyaz yapar. */
+      border-radius: 16px;
+      /* Kart kenarlarini yuvarlatir. */
+      padding: 2.5rem 2rem;
+      /* Kart ic boslugunu ayarlar. */
+      text-align: center;
+      /* Kart metnini ortalar. */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      /* Kart golgesini belirler. */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      /* Hover gecisini yumusatir. */
+    }
+
+    .value-card:hover {
+      /* Deger karti hover durumunu hedefler. */
+      transform: translateY(-6px);
+      /* Karti yukari kaldirir. */
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.13);
+      /* Hover golgesini guclendirir. */
+    }
+
+    .value-icon {
+      /* Deger ikonunu hedefler. */
+      width: 64px;
+      /* Ikon kutusunun genisligini belirler. */
+      height: 64px;
+      /* Ikon kutusunun yuksekligini belirler. */
+      background: linear-gradient(135deg, #c07c40, #e8a95e);
+      /* Ikon arka plan gradyanini ayarlar. */
+      border-radius: 50%;
+      /* Ikon kutusunu daire yapar. */
+      display: flex;
+      /* Icerigi ortalamak icin flex kullanir. */
+      align-items: center;
+      /* Ikonu dikey ortalar. */
+      justify-content: center;
+      /* Ikonu yatay ortalar. */
+      margin: 0 auto 1.2rem;
+      /* Ortalar ve alt bosluk verir. */
+      font-size: 1.4rem;
+      /* Ikon boyutunu belirler. */
+      color: #fff;
+      /* Ikon rengini beyaz yapar. */
+    }
+
+    .value-card h3 {
+      /* Deger karti basligini hedefler. */
+      font-family: 'Playfair Display', serif;
+      /* Playfair Display yazı tipini seçer, yüklü değilse serif kullanır. */
+      font-size: 1.25rem;
+      /* Baslik boyutunu ayarlar. */
+      color: #1e0f05;
+      /* Baslik rengini belirler. */
+      margin-bottom: 0.6rem;
+      /* Baslik altina bosluk ekler. */
+    }
+
+    .value-card p {
+      /* Deger karti aciklamasini hedefler. */
+      font-size: 0.9rem;
+      /* Aciklama metni boyutunu ayarlar. */
+      color: #7a6652;
+      /* Aciklama rengini belirler. */
+      line-height: 1.7;
+      /* Satir yuksekligini artirir. */
+    }
+
+    /* Ekip */
+    .team-grid {
+      /* Ekip gridini hedefler. */
+      display: grid;
+      /* Grid duzeni kurar. */
+      grid-template-columns: repeat(3, 1fr);
+      /* Uc sutunlu layout olusturur. */
+      gap: 2rem;
+      /* Kartlar arasi bosluk belirler. */
+    }
+
+    .team-card {
+      /* Ekip kartini hedefler. */
+      background: #fff;
+      /* Kart arka planini beyaz yapar. */
+      border-radius: 16px;
+      /* Kart koselerini yuvarlatir. */
+      overflow: hidden;
+      /* Tasan icerigi gizler. */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      /* Kart golgesini belirler. */
+      transition: transform 0.3s ease;
+      /* Hover gecisini yumusatir. */
+      text-align: center;
+      /* Kart metnini ortalar. */
+    }
+
+    .team-card:hover {
+      /* Kart hover durumunu hedefler. */
+      transform: translateY(-6px);
+      /* Karti yukari kaldirir. */
+    }
+
+    .team-photo {
+      /* Ekip fotografini hedefler. */
+      width: 100%;
+      /* Gorseli tam genislik yapar. */
+      height: 240px;
+      /* Gorsel yuksekligini belirler. */
+      object-fit: cover;
+      /* Gorseli kirpma ile kaplar. */
+    }
+
+    .team-info {
+      /* Ekip bilgi alanini hedefler. */
+      padding: 1.5rem;
+      /* Bilgi alanina ic bosluk verir. */
+    }
+
+    .team-info h3 {
+      /* Ekip ismini hedefler. */
+      font-family: 'Playfair Display', serif;
+      /* Playfair Display yazı tipini seçer, yüklü değilse serif kullanır. */
+      font-size: 1.15rem;
+      /* Isim boyutunu ayarlar. */
+      color: #1e0f05;
+      /* Isim rengini belirler. */
+      margin-bottom: 0.2rem;
+      /* Isim altina bosluk ekler. */
+    }
+
+    .team-role {
+      /* Rol metnini hedefler. */
+      font-size: 0.82rem;
+      /* Rol metni boyutunu ayarlar. */
+      color: #c07c40;
+      /* Rol rengini vurgular. */
+      font-weight: 600;
+      /* Rol kalinligini artirir. */
+      text-transform: uppercase;
+      /* Rol metnini buyuk harf yapar. */
+      letter-spacing: 0.07em;
+      /* Harf araligini artirir. */
+      margin-bottom: 0.6rem;
+      /* Rol altina bosluk ekler. */
+    }
+
+    .team-info p {
+      /* Ekip aciklama metnini hedefler. */
+      font-size: 0.88rem;
+      /* Metin boyutunu ayarlar. */
+      color: #7a6652;
+      /* Metin rengini yumusatir. */
+      line-height: 1.6;
+      /* Satir yuksekligini ayarlar. */
+    }
+
+    /* Zaman cizelgesi */
+    .timeline {
+      /* Zaman cizelgesi kapsayicisini hedefler. */
+      position: relative;
+      /* Cizgi ve nokta konumlamasi icin referans olur. */
+      max-width: 700px;
+      /* Maksimum genisligi sinirlar. */
+      margin: 0 auto;
+      /* Ortaya hizalar. */
+    }
+
+    .timeline::before {
+      /* Zaman cizelgesi merkez cizgisini hedefler. */
+      content: '';
+      /* Psuedo eleman icin bos icerik verir. */
+      position: absolute;
+      /* Cizgiyi kapsayiciya gore konumlar. */
+      left: 50%;
+      /* Cizgiyi ortaya yerlestirir. */
+      top: 0;
+      /* Cizgiyi ustten konumlar. */
+      bottom: 0;
+      /* Cizgiyi alta kadar uzatir. */
+      width: 2px;
+      /* Cizgi kalinligini belirler. */
+      background: linear-gradient(to bottom, #c07c40, #e8a95e);
+      /* Cizgiye gradyan verir. */
+      transform: translateX(-50%);
+      /* Cizgiyi tam ortaya kaydirir. */
+    }
+
+    .tl-item {
+      /* Zaman cizelgesi ogesini hedefler. */
+      display: flex;
+      /* Ogeleri esnek duzende hizalar. */
+      justify-content: flex-end;
+      /* Varsayilan hizayi saga alir. */
+      padding-right: calc(50% + 2.5rem);
+      /* Sagda bosluk birakir. */
+      margin-bottom: 2.5rem;
+      /* Ogeler arasi bosluk ekler. */
+      position: relative;
+      /* Nokta icin referans saglar. */
+    }
+
+    .tl-item:nth-child(even) {
+      /* Cift sira ogelerini hedefler. */
+      justify-content: flex-start;
+      /* Cift ogeleri sola hizalar. */
+      padding-right: 0;
+      /* Sag boslugu kaldirir. */
+      padding-left: calc(50% + 2.5rem);
+      /* Solda bosluk birakir. */
+    }
+
+    .tl-dot {
+      /* Zaman cizelgesi noktasini hedefler. */
+      position: absolute;
+      /* Noktayi cizgiye gore konumlar. */
+      left: 50%;
+      /* Noktayi ortaya getirir. */
+      top: 1rem;
+      /* Noktayi yukaridan kaydirir. */
+      transform: translateX(-50%);
+      /* Noktayi tam ortaya oturtur. */
+      width: 16px;
+      /* Nokta genisligini belirler. */
+      height: 16px;
+      /* Nokta yuksekligini belirler. */
+      background: #c07c40;
+      /* Nokta rengini belirler. */
+      border-radius: 50%;
+      /* Noktayi daire yapar. */
+      border: 3px solid #fdf8f3;
+      /* Noktaya cerceve ekler. */
+      z-index: 1;
+      /* Noktayi ustte tutar. */
+    }
+
+    .tl-content {
+      /* Zaman cizelgesi kartini hedefler. */
+      background: #fff;
+      /* Kart arka planini beyaz yapar. */
+      padding: 1.2rem 1.5rem;
+      /* Kart ic boslugunu ayarlar. */
+      border-radius: 12px;
+      /* Kart koselerini yuvarlatir. */
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      /* Kart golgesini belirler. */
+      max-width: 280px;
+      /* Kart genisligini sinirlar. */
+    }
+
+    .tl-year {
+      /* Yil etiketini hedefler. */
+      font-size: 0.75rem;
+      /* Yil metni boyutunu ayarlar. */
+      font-weight: 700;
+      /* Yil metnini kalinlastirir. */
+      color: #c07c40;
+      /* Yil rengini vurgular. */
+      letter-spacing: 0.1em;
+      /* Harf araligini artirir. */
+      text-transform: uppercase;
+      /* Metni buyuk harfe cevirir. */
+      margin-bottom: 0.3rem;
+      /* Altina bosluk ekler. */
+    }
+
+    .tl-content h4 {
+      /* Zaman cizelgesi basligini hedefler. */
+      font-family: 'Playfair Display', serif;
+      /* Playfair Display yazı tipini seçer, yüklü değilse serif kullanır. */
+      font-size: 1rem;
+      /* Baslik boyutunu ayarlar. */
+      color: #1e0f05;
+      /* Baslik rengini belirler. */
+      margin-bottom: 0.3rem;
+      /* Baslik altina bosluk verir. */
+    }
+
+    .tl-content p {
+      /* Zaman cizelgesi aciklamasini hedefler. */
+      font-size: 0.85rem;
+      /* Metin boyutunu ayarlar. */
+      color: #7a6652;
+      /* Metin rengini yumusatir. */
+      line-height: 1.6;
+      /* Satir yuksekligini ayarlar. */
+    }
+
+    @media (max-width: 768px) {
+
+      /* 768px altinda mobil stilleri uygular. */
+      .story-grid {
+        /* Mobilde hikaye gridini hedefler. */
+        flex-direction: column;
+        /* Icerigi dikey dizer. */
+        gap: 3rem;
+        /* Dikey boslugu azaltir. */
+      }
+
+      .story-img-wrap {
+        /* Mobilde gorsel sarmalayicisini hedefler. */
+        flex: none;
+        /* Esnek genisligi sifirlar. */
+        max-width: 100%;
+        /* Maksimum genisligi tam yapar. */
+        width: 100%;
+        /* Genisligi tam yapar. */
+      }
+
+      .story-img {
+        /* Mobilde hikaye gorselini hedefler. */
+        height: 320px;
+        /* Gorsel yuksekligini kucultur. */
+      }
+
+      .values-grid {
+        /* Mobilde degerler gridini hedefler. */
+        grid-template-columns: 1fr;
+        /* Tek sutuna dusurur. */
+      }
+
+      .team-grid {
+        /* Mobilde ekip gridini hedefler. */
+        grid-template-columns: 1fr;
+        /* Tek sutunlu yapar. */
+      }
+
+      .timeline::before {
+        /* Mobilde cizgi konumunu hedefler. */
+        left: 1.2rem;
+        /* Cizgiyi sola kaydirir. */
+      }
+
+      .tl-item,
+      .tl-item:nth-child(even) {
+        /* Mobilde tum zaman ogelerini hedefler. */
+        padding: 0 0 0 3.5rem;
+        /* Sol bosluk birakir. */
+        justify-content: flex-start;
+        /* Kartlari sola hizalar. */
+      }
+
+      .tl-dot {
+        /* Mobilde nokta konumunu hedefler. */
+        left: 1.2rem;
+        /* Noktayi sola kaydirir. */
+      }
+
+      .tl-content {
+        /* Mobilde kart genisligini hedefler. */
+        max-width: 100%;
+        /* Kart genisligini tam yapar. */
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+      /* Tablet araligini hedefler. */
+      .values-grid {
+        /* Tablet degerler gridini hedefler. */
+        grid-template-columns: repeat(2, 1fr);
+        /* Iki sutunlu yapar. */
+      }
+
+      .team-grid {
+        /* Tablet ekip gridini hedefler. */
+        grid-template-columns: repeat(2, 1fr);
+        /* Iki sutunlu yapar. */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar" id="navbar"> <!-- Ust gezinti cubugunu hedefler. -->
+    <div class="nav-container"> <!-- Navbar icerigini sinirlar. -->
+      <a href="index.html" class="nav-logo" aria-label="Amber & Roast Ana Sayfa">
+        <!-- Logo baglantisini ana sayfaya yollar. -->
+        <i class="fa-solid fa-mug-hot nav-logo-icon"></i> <!-- Marka ikonunu gosterir. -->
+        <span>Amber <span class="accent">&amp;</span> Roast</span> <!-- Marka adini vurgular. -->
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Ana Menü"> <!-- Ana menu baglantilarini tutar. -->
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a>
+        <!-- Ana sayfa baglantisini gosterir. -->
+        <a href="about.html" class="nav-link active"><i class="fa-solid fa-circle-info"></i> Hakkımızda</a>
+        <!-- Hakkimizda baglantisini aktif gosterir. -->
+        <a href="menu.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menü</a>
+        <!-- Menu baglantisini gosterir. -->
+        <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> İletişim</a>
+        <!-- Iletisim baglantisini gosterir. -->
+      </nav>
+      <div class="nav-right"> <!-- Sag taraftaki arama ve ikonlari tutar. -->
+        <div class="nav-search" id="searchWrapper"> <!-- Arama alanini kapsar. -->
+          <input type="text" id="searchInput" class="search-input" placeholder="Ara…" aria-label="Ara" />
+          <!-- Arama metni girisi verir. -->
+          <button class="search-btn" id="searchToggle" aria-label="Aramayı aç/kapat">
+            <!-- Arama acma butonunu gosterir. -->
+            <i class="fa-solid fa-magnifying-glass"></i> <!-- Arama ikonunu gosterir. -->
+          </button>
+        </div>
+        <div class="nav-socials"> <!-- Sosyal baglanti ikonlarini tutar. -->
+          <a href="https://www.instagram.com/?hl=tr" class="social-icon" aria-label="Instagram" target="_blank">
+            <!-- Instagram baglantisini acar. -->
+            <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gosterir. -->
+          </a>
+
+          <a href="https://www.facebook.com/?locale=tr_TR" class="social-icon" aria-label="Facebook" target="_blank">
+            <!-- Facebook baglantisini acar. -->
+            <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gosterir. -->
+          </a>
+
+          <a href="https://x.com/?lang=tr" class="social-icon" aria-label="Twitter" target="_blank">
+            <!-- Twitter baglantisini acar. -->
+            <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gosterir. -->
+          </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
+          <!-- Mobil menu dugmesini gosterir. -->
+          <span></span><span></span><span></span> <!-- Hamburger cizgilerini cizer. -->
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main> <!-- Ana sayfa icerigini tutar. -->
+    <!-- SAYFA BANNERI -->
+    <section class="page-banner"> <!-- Ust banner bolumunu gosterir. -->
+      <h1>Biz <span class="accent">Kimiz</span></h1> <!-- Banner basligini vurgular. -->
+      <p>Büyük bir hikayesi olan küçük bir kafe — 2018'den beri tutku ile demleniyor.</p>
+      <!-- Banner aciklamasini yazar. -->
+    </section>
+
+    <!-- HIKAYEMIZ -->
+    <section class="section" id="story" style="background: #fdf8f3;"> <!-- Hikaye bolumunu gosterir. -->
+      <div class="container"> <!-- Icerigi ortalayan kapsayici ekler. -->
+        <div class="story-grid"> <!-- Hikaye icerigini sutunlara ayirir. -->
+          <div class="story-img-wrap reveal"> <!-- Gorsel alanini ve reveal efektini tutar. -->
+            <img src="img/about_cafe.png" alt="Amber & Roast’ta kahve hazırlayan barista" class="story-img" />
+            <!-- Hikaye gorselini gosterir. -->
+            <div class="story-badge"> <!-- Deneyim rozetini gosterir. -->
+              <span class="num">8+</span> <!-- Deneyim sayisini belirtir. -->
+              <span class="lbl">Yıllık Deneyim</span> <!-- Rozet metnini belirtir. -->
+            </div>
+          </div>
+          <div class="reveal"> <!-- Metin alanina reveal efekti verir. -->
+            <span class="section-tag">Hikayemiz</span> <!-- Kucuk baslik etiketi gosterir. -->
+            <h2 class="section-title"><span class="accent">Tutku</span> ile Demlendi,<br />Sevgi ile Sunuldu</h2>
+            <!-- Ana basligi yazar. -->
+            <p style="color:#7a6652; line-height:1.8; margin-bottom:1rem;">Amber &amp; Roast, 2018 yılında Ali Kajeviç'in
+              yağmurlu bir öğleden sonra İstanbul'da kurduğu hayalinden doğdu.
+              Altı masalı küçük bir köşe dükkanı olarak başlayan yer, şehrin en sevilen özel kahve mekanlarından birine
+            dönüştü.</p> <!-- Ilk hikaye paragrafinin metnini verir. -->
+            <p style="color:#7a6652; line-height:1.8; margin-bottom:1rem;">Kullandığımız her çekirdek tek kökenlidir ve
+              Etiyopya, Kolombiya ve Guatemala'daki küçük çiftliklerden doğrudan etik yollarla temin edilir.
+              Baristalarımız, her fincanın — ister sade bir Americano ister özenli bir pour-over olsun — küçük bir sanat
+            eseri olmasını sağlamak için 200+ saatlik eğitim alır.</p>
+            <!-- Ikinci hikaye paragrafinin metnini verir. -->
+            <p style="color:#7a6652; line-height:1.8;">Kahvenin ötesinde, kafemizi bir topluluk alanı olarak
+              görüyoruz.Yerel sanatçılara, açık mikrofon gecelerine ve mevsimlik etkinliklere ev sahipliği yaparak
+            mekânımızı mahallenin kültürel buluşma noktasına dönüştürüyoruz.</p>
+            <!-- Ucuncu hikaye paragrafinin metnini verir. -->
+            <ul style="list-style:none; padding:0; margin-top:1.5rem;"> <!-- Degerleri listeleyen alanı kurar. -->
+              <li style="margin-bottom:0.6rem;"><i class="fa-solid fa-leaf accent-icon"></i> Etik kaynaklı, tek kökenli
+              çekirdekler</li> <!-- Deger maddesini listeler. -->
+              <li style="margin-bottom:0.6rem;"><i class="fa-solid fa-award accent-icon"></i> Ödüllü barista ekibi</li>
+              <!-- Deger maddesini listeler. -->
+              <li style="margin-bottom:0.6rem;"><i class="fa-solid fa-heart accent-icon"></i> Topluluk öncelikli felsefe
+              </li> <!-- Deger maddesini listeler. -->
+              <li><i class="fa-solid fa-recycle accent-icon"></i> Sıfır atık &amp; çevre dostu ambalaj</li>
+              <!-- Deger maddesini listeler. -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEGERLERIMIZ -->
+    <section class="section" id="values" style="background: #f5ebe0;"> <!-- Degerler bolumunu gosterir. -->
+      <div class="container"> <!-- Degerler kapsayicisini ekler. -->
+        <div class="section-header reveal"> <!-- Baslik alanini ve reveal efektini tutar. -->
+          <span class="section-tag">Neye İnandığımız</span> <!-- Baslik etiketini gosterir. -->
+          <h2 class="section-title">Temel <span class="accent">Değerlerimiz</span></h2> <!-- Bolum basligini yazar. -->
+          <p class="section-sub">Her fincanı ve her misafiri yönlendiren ilkeler.</p>
+          <!-- Alt aciklama metnini yazar. -->
+        </div>
+        <div class="values-grid"> <!-- Deger kartlari gridini gosterir. -->
+          <div class="value-card reveal"> <!-- Deger kartini gosterir. -->
+            <div class="value-icon"><i class="fa-solid fa-seedling"></i></div> <!-- Deger ikonunu gosterir. -->
+            <h3>Sürdürülebilirlik</h3> <!-- Deger basligini yazar. -->
+            <p>Kompostlanabilir bardaklardan güneş enerjisiyle kavurmaya kadar her adımda çevresel ayak izimizi en aza
+            indiriyoruz.</p> <!-- Deger aciklamasini yazar. -->
+          </div>
+          <div class="value-card reveal"> <!-- Deger kartini gosterir. -->
+            <div class="value-icon"><i class="fa-solid fa-star"></i></div> <!-- Deger ikonunu gosterir. -->
+            <h3>Kalite Önce Gelir</h3> <!-- Deger basligini yazar. -->
+            <p>Malzeme konusunda hiçbir zaman taviz vermiyoruz. Menüdeki her ürün size ulaşmadan önce titiz bir kalite
+            kontrolünden geçer.</p> <!-- Deger aciklamasini yazar. -->
+          </div>
+          <div class="value-card reveal"> <!-- Deger kartini gosterir. -->
+            <div class="value-icon"><i class="fa-solid fa-heart"></i></div> <!-- Deger ikonunu gosterir. -->
+            <h3>Topluluk Sevgisi</h3> <!-- Deger basligini yazar. -->
+            <p>Aylık kârımızın %10'u yerel gıda bankalarına gidiyor. İyi bir kahvenin dünyaya da iyi şeyler yapması
+            gerektiğine inanıyoruz.</p> <!-- Deger aciklamasini yazar. -->
+          </div>
+          <div class="value-card reveal"> <!-- Deger kartini gosterir. -->
+            <div class="value-icon"><i class="fa-solid fa-flask"></i></div> <!-- Deger ikonunu gosterir. -->
+            <h3>Yenilikçilik</h3> <!-- Deger basligini yazar. -->
+            <p>Mevsimlik spesiyallerimiz her 6 haftada bir değişir; lezzetin sınırlarını zorlayarak beklentilere meydan
+            okuyoruz.</p> <!-- Deger aciklamasini yazar. -->
+          </div>
+          <div class="value-card reveal"> <!-- Deger kartini gosterir. -->
+            <div class="value-icon"><i class="fa-solid fa-handshake"></i></div> <!-- Deger ikonunu gosterir. -->
+            <h3>Adil Ticaret</h3> <!-- Deger basligini yazar. -->
+            <p>Her çiftlik ortağımıza adil ticaret fiyatlarının üzerinde ödeme yapıyor, çekirdeklerimizi yetiştiren
+            insanların onurlu bir yaşam sürmesini sağlıyoruz.</p> <!-- Deger aciklamasini yazar. -->
+          </div>
+          <div class="value-card reveal"> <!-- Deger kartini gosterir. -->
+            <div class="value-icon"><i class="fa-solid fa-mug-hot"></i></div> <!-- Deger ikonunu gosterir. -->
+            <h3>Zanaat ve Ustalık</h3> <!-- Deger basligini yazar. -->
+            <p>Espresso hem bir bilim hem de bir sanattır. Baristalarımız her gün tekniklerini geliştirerek bunu ikisi
+            birden olarak görür.</p> <!-- Deger aciklamasini yazar. -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZAMAN CIZELGESI -->
+    <section class="section" id="timeline" style="background: #fdf8f3;"> <!-- Zaman cizelgesi bolumunu gosterir. -->
+      <div class="container"> <!-- Zaman cizelgesi kapsayicisini ekler. -->
+        <div class="section-header reveal"> <!-- Zaman cizelgesi baslik alanini tutar. -->
+          <span class="section-tag">Yolculuğumuz</span> <!-- Baslik etiketini gosterir. -->
+          <h2 class="section-title"><span class="accent">Kilometre Taşları</span> Zaman Çizelgesi</h2>
+          <!-- Bolum basligini yazar. -->
+          <p class="section-sub">Yıllar süren bir yolculuk, her seferinde bir fincan.</p> <!-- Alt aciklamayi yazar. -->
+        </div>
+        <div class="timeline"> <!-- Zaman cizelgesi icerigini gosterir. -->
+          <div class="tl-item reveal"> <!-- Zaman cizelgesi ogesini gosterir. -->
+            <div class="tl-dot"></div> <!-- Zaman noktasi cizer. -->
+            <div class="tl-content"> <!-- Oge metin kartini gosterir. -->
+              <p class="tl-year">2018</p> <!-- Yil bilgisini yazar. -->
+              <h4>Kuruluş</h4> <!-- Olay basligini yazar. -->
+              <p>Ali Kajeviç, Amber &amp; Roast'u Beyoğlu'nda 6 masa ve el değirmeniyle açtı.</p>
+              <!-- Olay aciklamasini yazar. -->
+            </div>
+          </div>
+          <div class="tl-item reveal"> <!-- Zaman cizelgesi ogesini gosterir. -->
+            <div class="tl-dot"></div> <!-- Zaman noktasi cizer. -->
+            <div class="tl-content"> <!-- Oge metin kartini gosterir. -->
+              <p class="tl-year">2019 İlkbahar</p> <!-- Yil bilgisini yazar. -->
+              <h4>En İyi Yeni Kafe Ödülü</h4> <!-- Olay basligini yazar. -->
+              <p>İstanbul Yiyecek &amp; Kültür Dergisi bizi En İyi Yeni Kafe seçti. Kuyruk kapının dışına taşmaya
+              başladı.</p> <!-- Olay aciklamasini yazar. -->
+            </div>
+          </div>
+          <div class="tl-item reveal"> <!-- Zaman cizelgesi ogesini gosterir. -->
+            <div class="tl-dot"></div> <!-- Zaman noktasi cizer. -->
+            <div class="tl-content"> <!-- Oge metin kartini gosterir. -->
+              <p class="tl-year">2021 Yaz</p> <!-- Yil bilgisini yazar. -->
+              <h4>Çekirdekten Fincana Tedarik</h4> <!-- Olay basligini yazar. -->
+              <p>Etiyopya, Kolombiya ve Guatemala'daki üç çiftlikle doğrudan ortaklık kurduk.</p>
+              <!-- Olay aciklamasini yazar. -->
+            </div>
+          </div>
+          <div class="tl-item reveal"> <!-- Zaman cizelgesi ogesini gosterir. -->
+            <div class="tl-dot"></div> <!-- Zaman noktasi cizer. -->
+            <div class="tl-content"> <!-- Oge metin kartini gosterir. -->
+              <p class="tl-year">2022 Sonbahar</p> <!-- Yil bilgisini yazar. -->
+              <h4>Tam Mutfak Açılışı</h4> <!-- Olay basligini yazar. -->
+              <p>Mutfağımızı genişleterek taze pastalar ve tam bir brunch menüsü sunduk.</p>
+              <!-- Olay aciklamasini yazar. -->
+            </div>
+          </div>
+          <div class="tl-item reveal"> <!-- Zaman cizelgesi ogesini gosterir. -->
+            <div class="tl-dot"></div> <!-- Zaman noktasi cizer. -->
+            <div class="tl-content"> <!-- Oge metin kartini gosterir. -->
+              <p class="tl-year">2025 Kış</p> <!-- Yil bilgisini yazar. -->
+              <h4>Topluluk Kavurma Atölyesi</h4> <!-- Olay basligini yazar. -->
+              <p>Yerinde mikro kavurma atölyemiz açıldı; misafirler her sabah çekirdeklerin dönüşümünü canlı
+              izleyebiliyor.</p> <!-- Olay aciklamasini yazar. -->
+            </div>
+          </div>
+          <div class="tl-item reveal"> <!-- Zaman cizelgesi ogesini gosterir. -->
+            <div class="tl-dot"></div> <!-- Zaman noktasi cizer. -->
+            <div class="tl-content"> <!-- Oge metin kartini gosterir. -->
+              <p class="tl-year">Bugün</p> <!-- Yil bilgisini yazar. -->
+              <h4>Bugün &amp; Ötesi</h4> <!-- Olay basligini yazar. -->
+              <p>48.000+ fincan servis edildi, %98 misafir memnuniyeti ve büyümeye devam ediyoruz — her seferinde bir
+              mükemmel espresso.</p> <!-- Olay aciklamasini yazar. -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EKIP -->
+    <section class="section" id="team" style="background: #f5ebe0;"> <!-- Ekip bolumunu gosterir. -->
+      <div class="container"> <!-- Ekip kapsayicisini ekler. -->
+        <div class="section-header reveal"> <!-- Ekip baslik alanini gosterir. -->
+          <span class="section-tag">Fincanınızın Arkasındaki Yüzler</span> <!-- Baslik etiketini yazar. -->
+          <h2 class="section-title"><span class="accent">Ekibimizle</span> Tanışın</h2> <!-- Bolum basligini yazar. -->
+          <p class="section-sub">Ziyaretinizi her gün olağanüstü kılmak için gelen tutkulu insanlar.</p>
+          <!-- Alt aciklama yazar. -->
+        </div>
+        <div class="team-grid"> <!-- Ekip kartlarini grid olarak dizer. -->
+          <div class="team-card reveal"> <!-- Ekip kartini gosterir. -->
+            <img src="img/ali.jpeg" alt="Ali Kajeviç — Kurucu" class="team-photo" />
+            <!-- Ekip gorselini gosterir. -->
+            <div class="team-info"> <!-- Ekip bilgi alanini gosterir. -->
+              <h3>Ali Kajeviç</h3> <!-- Ismi yazar. -->
+              <p class="team-role">Kurucu</p> <!-- Rol bilgisini yazar. -->
+              <p>Eski bir otelcilik müdürü, şimdi kafe sahibi. Ali, her misafirin geldiğinden daha mutlu ayrılmasını
+              sağlıyor.</p> <!-- Kisa biyografi yazar. -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ISTATISTIK BANNERI -->
+    <section class="stats-banner"> <!-- Istatistik banner bolumunu gosterir. -->
+      <div class="container stats-grid"> <!-- Istatistik icerigini grid olarak dizer. -->
+        <div class="stat-item reveal"> <!-- Tek istatistik kutusunu gosterir. -->
+          <span class="stat-number" data-target="48000">0</span><span class="stat-suffix">+</span>
+          <!-- Sayac ve ekini birlikte gosterir. -->
+          <p>Servis Edilen Fincan</p> <!-- Istatistik aciklamasini yazar. -->
+        </div>
+        <div class="stat-item reveal"> <!-- Tek istatistik kutusunu gosterir. -->
+          <span class="stat-number" data-target="14">0</span><span class="stat-suffix">+</span>
+          <!-- Sayac ve ekini birlikte gosterir. -->
+          <p>Menü Ürünü</p> <!-- Istatistik aciklamasini yazar. -->
+        </div>
+        <div class="stat-item reveal"> <!-- Tek istatistik kutusunu gosterir. -->
+          <span class="stat-number" data-target="8">0</span><span class="stat-suffix"> Yıl</span>
+          <!-- Sayac ve ekini birlikte gosterir. -->
+          <p>Sektördeyiz</p> <!-- Istatistik aciklamasini yazar. -->
+        </div>
+        <div class="stat-item reveal"> <!-- Tek istatistik kutusunu gosterir. -->
+          <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+          <!-- Sayac ve ekini birlikte gosterir. -->
+          <p>Mutlu Misafir</p> <!-- Istatistik aciklamasini yazar. -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer"> <!-- Sayfa alt bilgisini gosterir. -->
+    <div class="container footer-grid"> <!-- Footer icerigini grid olarak dizer. -->
+      <div class="footer-brand"> <!-- Marka alanini gosterir. -->
+        <a href="index.html" class="nav-logo footer-logo"> <!-- Footer logosunu ana sayfaya baglar. -->
+          <i class="fa-solid fa-mug-hot"></i> <!-- Marka ikonunu gosterir. -->
+          <span>Amber <span class="accent">&amp;</span> Roast</span> <!-- Marka adini yazar. -->
+        </a>
+        <p class="footer-tagline">Her Yudumda Bir Hikaye Var.</p> <!-- Footer sloganini yazar. -->
+        <div class="footer-socials"> <!-- Sosyal baglantilari gosterir. -->
+          <a href="https://www.instagram.com/?hl=tr" aria-label="Instagram" target="_blank">
+            <!-- Instagram baglantisini acar. -->
+            <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gosterir. -->
+          </a>
+
+          <a href="https://www.facebook.com/?locale=tr_TR" aria-label="Facebook" target="_blank">
+            <!-- Facebook baglantisini acar. -->
+            <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gosterir. -->
+          </a>
+
+          <a href="https://x.com/?lang=tr" aria-label="Twitter" target="_blank"> <!-- Twitter baglantisini acar. -->
+            <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gosterir. -->
+          </a>
+
+          <a href="https://www.tiktok.com/tr-TR/" aria-label="TikTok" target="_blank">
+            <!-- TikTok baglantisini acar. -->
+            <i class="fa-brands fa-tiktok"></i> <!-- TikTok ikonunu gosterir. -->
+          </a>
+        </div>
+      </div>
+      <div class="footer-col"> <!-- Hizli baglanti sutununu gosterir. -->
+        <h4 class="footer-heading">Hızlı Bağlantılar</h4> <!-- Sutun basligini yazar. -->
+        <ul>
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Ana Sayfa</a></li>
+          <!-- Ana sayfa linkini yazar. -->
+          <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> Hakkımızda</a></li>
+          <!-- Hakkimizda linkini yazar. -->
+          <li><a href="menu.html"><i class="fa-solid fa-angle-right"></i> Menü</a></li> <!-- Menu linkini yazar. -->
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> İletişim</a></li>
+          <!-- Iletisim linkini yazar. -->
+        </ul>
+      </div>
+      <div class="footer-col"> <!-- Calisma saatleri sutununu gosterir. -->
+        <h4 class="footer-heading">Çalışma Saatleri</h4> <!-- Sutun basligini yazar. -->
+        <ul class="hours-list"> <!-- Saatler listesini gosterir. -->
+          <li><span>Pzt – Cum</span><span>07:00 – 22:00</span></li> <!-- Hafta ici saatlerini yazar. -->
+          <li><span>Cumartesi</span><span>08:00 – 23:00</span></li> <!-- Cumartesi saatlerini yazar. -->
+          <li><span>Pazar</span><span>09:00 – 21:00</span></li> <!-- Pazar saatlerini yazar. -->
+        </ul>
+      </div>
+      <div class="footer-col"> <!-- Iletisim sutununu gosterir. -->
+        <h4 class="footer-heading">Bizi Bulun</h4> <!-- Sutun basligini yazar. -->
+        <address> <!-- Adres bilgisini semantik olarak belirtir. -->
+          <p><i class="fa-solid fa-location-dot"></i> İstanbul Galata Üniversitesi Piyalepaşa
+            Yerleşkesi,<br />Hacıahmet, Irmak Cd. DLP 1-9, 34440 Beyoğlu/İstanbul</p> <!-- Adres satirini yazar. -->
+            <p><i class="fa-solid fa-phone"></i> <a href="tel:+902121234567">+90 212 123 45 67</a></p>
+            <!-- Telefon bilgisini yazar. -->
+            <p><i class="fa-solid fa-envelope"></i> <a href="mailto:amberroast@gmail.com">amberroast@gmail.com</a></p>
+            <!-- E-posta bilgisini yazar. -->
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom"> <!-- Footer alt bandini gosterir. -->
+        <p>&copy; 2018 Amber &amp; Roast. Tüm hakları saklıdır. | İstanbul'da <i class="fa-solid fa-heart"
+          style="color:#c07c40;"></i> ile tasarlandı</p> <!-- Telif metnini yazar. -->
+        </div>
+      </footer>
+
+      <script src="js/script.js"></script> <!-- JavaScript dosyasini sayfaya ekler. -->
+    </body>
+
+    </html>

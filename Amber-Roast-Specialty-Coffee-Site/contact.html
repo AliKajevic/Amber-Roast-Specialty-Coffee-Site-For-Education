@@ -1,0 +1,440 @@
+<!DOCTYPE html> <!-- HTML5 belgesi olduğunu belirtir. -->
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /> <!-- Türkçe karakterleri doğru göstermek için UTF-8 kullanır. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Mobil cihazlarda uygun ölçeklemeyi sağlar. -->
+  <meta name="description" content="Amber & Roast ile iletişime geçin — mesaj gönderin, konumumuzu bulun veya bizi arayın." /> <!-- Arama motorları için sayfa açıklaması sağlar. -->
+  <title>İletişim | Amber &amp; Roast</title> <!-- Sekme başlığını belirler. -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" /> <!-- Sekme simgesini (favicon) tanımlar. -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- Google Fonts alanına erken bağlantı kurar. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <!-- Font dosyaları için erken bağlantı ve CORS ayarı yapar. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /> <!-- Kullanılan yazı tiplerini yükler. -->
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> <!-- İkon kütüphanesini sayfaya ekler. -->
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css" /> <!-- Genel site stillerini uygular. -->
+
+  <!-- Internal CSS — contact page specific -->
+  <style> /* İletişim sayfasına özel stilleri tanımlar. */
+  /* Page Banner */
+  .page-banner { /* Üst bannerin arka plan ve boşluklarını belirler. */
+    background: linear-gradient(135deg, #1e0f05 0%, #5a320a 100%); /* Banner arka plan gradyanını verir. */
+    padding: 9rem 2rem 4rem; /* Üst, yatay ve alt iç boşlukları ayarlar. */
+    text-align: center; /* Banner içeriğini ortalar. */
+  }
+  .page-banner h1 { /* Banner başlığının yazı tipini ve boyutunu ayarlar. */
+    font-family: 'Playfair Display', serif; /* Playfair Display yazi tipini seçer, yüklü degilse serif kullanir. */
+    font-size: clamp(2.2rem, 5vw, 3.8rem); /* Başlık boyutunu ekranla ölçekler. */
+    color: #f5ebe0; /* Başlık rengini açık tona çeker. */
+    margin-bottom: 0.5rem; /* Başlık altına küçük boşluk ekler. */
+  }
+  .page-banner p { /* Banner açıklama metnini biçimlendirir. */
+    color: #c9a77a; /* Açıklama metninin rengini belirler. */
+    font-size: 1.1rem; /* Açıklama metni boyutunu ayarlar. */
+  }
+
+  /* Contact Layout */
+  .contact-layout { /* İletişim bölümünü iki sütunlu ızgara yapar. */
+    display: grid; /* Düzeni grid olarak kurar. */
+    grid-template-columns: 1fr 1fr; /* İki eşit sütun oluşturur. */
+    gap: 4rem; /* Sütunlar arası boşluğu belirler. */
+    align-items: start; /* Sütun içlerini üstten hizalar. */
+  }
+  @media (max-width: 768px) { /* 768px altı ekranlarda tek sütun düzeni sağlar. */
+    .contact-layout { /* Mobil düzeni hedefler. */
+      grid-template-columns: 1fr; /* Tek sütuna düşürür. */
+      gap: 2.5rem; /* Mobilde sütun aralığını azaltır. */
+    }
+  }
+
+  /* Contact Info Cards */
+  .contact-info-cards { /* Bilgi kartlarını dikey bir liste halinde hizalar. */
+    display: flex; /* Kartları esnek düzende diziler. */
+    flex-direction: column; /* Kartları dikey akışta sıralar. */
+    gap: 1.2rem; /* Kartlar arası boşluğu belirler. */
+    margin-top: 2rem; /* Kart grubuna üstten boşluk verir. */
+  }
+  .info-card { /* Her bilgi kartının görsel kutu stilini tanımlar. */
+    display: flex; /* Kart içeriğini yatay hizalar. */
+    align-items: flex-start; /* Kart içindeki öğeleri üstten hizalar. */
+    gap: 1.2rem; /* İkon ve metin arası boşluk bırakır. */
+    background: #fff; /* Kart arka planını beyaz yapar. */
+    padding: 1.4rem; /* Kart iç boşluğunu ayarlar. */
+    border-radius: 12px; /* Kart köşelerini yuvarlatır. */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07); /* Kart gölgesini yumuşatır. */
+    transition: transform 0.25s ease; /* Hover dönüşümü için geçiş ekler. */
+  }
+  .info-card:hover { transform: translateX(6px); } /* Hover sırasında kartı yana kaydırır. */
+  .info-card-icon { /* Karttaki ikon için dairesel arka plan oluşturur. */
+    width: 48px; /* İkon alanı genişliğini belirler. */
+    height: 48px; /* İkon alanı yüksekliğini belirler. */
+    background: linear-gradient(135deg, #c07c40, #e8a95e); /* İkon arka planına gradyan verir. */
+    border-radius: 50%; /* İkon alanını tam daire yapar. */
+    display: flex; /* İkonu ortalamak için flex kullanır. */
+    align-items: center; /* İkonu dikey ortalar. */
+    justify-content: center; /* İkonu yatay ortalar. */
+    color: #fff; /* İkon rengini beyaz yapar. */
+    font-size: 1.1rem; /* İkon boyutunu ayarlar. */
+    flex-shrink: 0; /* İkonun daralmasını engeller. */
+  }
+  .info-card-text h4 { /* Kart başlığının tipografisini ayarlar. */
+    font-weight: 600; /* Başlık kalınlığını belirler. */
+    color: #1e0f05; /* Başlık rengini belirler. */
+    margin-bottom: 0.25rem; /* Başlık altına küçük boşluk verir. */
+  }
+  .info-card-text p, .info-card-text a { /* Kart metni ve linklerinin görünümünü düzenler. */
+    font-size: 0.92rem; /* Metin boyutunu ayarlar. */
+    color: #7a6652; /* Metin rengini yumuşatır. */
+    text-decoration: none; /* Link alt çizgisini kaldırır. */
+  }
+  .info-card-text a:hover { color: #c07c40; } /* Link hover rengini vurgular. */
+
+  /* Form Styles */
+  .contact-form-wrap { /* Form kutusunun arka plan ve gölge stilini tanımlar. */
+    background: #fff; /* Form kutusunun arka planını beyaz yapar. */
+    padding: 2.5rem; /* Form kutusunun iç boşluğunu belirler. */
+    border-radius: 20px; /* Form kutusunun köşelerini yuvarlatır. */
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1); /* Form kutusuna derin gölge ekler. */
+  }
+  .contact-form-wrap h2 { /* Form başlığının tipografisini ayarlar. */
+    font-family: 'Playfair Display', serif; /* Playfair Display yazi tipini seçer, yüklü degilse serif kullanir. */
+    font-size: 1.9rem; /* Başlık boyutunu ayarlar. */
+    color: #1e0f05; /* Başlık rengini koyu yapar. */
+    margin-bottom: 1.5rem; /* Başlık altına boşluk verir. */
+  }
+  .form-group { /* Form alanları arasında boşluk bırakır. */
+    margin-bottom: 1.3rem; /* Her alanın altına boşluk ekler. */
+  }
+  .form-group label { /* Etiketlerin yazı stilini ve aralığını belirler. */
+    display: block; /* Etiketi satır bazında gösterir. */
+    font-size: 0.88rem; /* Etiket boyutunu ayarlar. */
+    font-weight: 600; /* Etiket kalınlığını belirler. */
+    color: #4a3728; /* Etiket rengini belirler. */
+    margin-bottom: 0.4rem; /* Etiket altına boşluk ekler. */
+    letter-spacing: 0.03em; /* Harf aralığını hafif açar. */
+  }
+  .form-group input,
+  .form-group textarea { /* Form girdilerinin görünümünü ve geçişlerini ayarlar. */
+    width: 100%; /* Alanın tam genişliği kaplamasını sağlar. */
+    padding: 0.85rem 1.1rem; /* İç boşlukları belirler. */
+    border: 2px solid #e8d9c8; /* Sınır çizgisinin rengini ve kalınlığını belirler. */
+    border-radius: 10px; /* Kenarları yuvarlatır. */
+    font-family: 'Inter', sans-serif; /* Form yazı tipini ayarlar. */
+    font-size: 0.95rem; /* Form metin boyutunu ayarlar. */
+    color: #1e0f05; /* Form metin rengini belirler. */
+    background: #fdf8f3; /* Form arka plan rengini açık yapar. */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Odak geçişini yumuşatır. */
+    box-sizing: border-box; /* Kenarlık ve dolguyu genişliğe dahil eder. */
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { /* Odaklanan alanlara vurgu efekti verir. */
+    outline: none; /* Varsayılan odak çizgisini kaldırır. */
+    border-color: #c07c40; /* Odakta sınır rengini değiştirir. */
+    box-shadow: 0 0 0 3px rgba(192,124,64,0.15); /* Odak halkası ekler. */
+  }
+  .form-group input.error,
+  .form-group textarea.error { /* Hatalı alanları kırmızı tonla vurgular. */
+    border-color: #e05252; /* Hata durumunda sınır rengini kırmızı yapar. */
+    box-shadow: 0 0 0 3px rgba(224,82,82,0.12); /* Hata odak halkası ekler. */
+  }
+  .form-group textarea { /* Mesaj alanının minimum yüksekliğini belirler. */
+    resize: vertical; /* Dikey yeniden boyutlandırmaya izin verir. */
+    min-height: 140px; /* Minimum yüksekliği belirler. */
+  }
+  .form-error-msg { /* Hata mesajlarını gizli ve küçük boyutta tutar. */
+    font-size: 0.8rem; /* Hata metni boyutunu ayarlar. */
+    color: #e05252; /* Hata metni rengini belirler. */
+    margin-top: 0.3rem; /* Hata mesajına üst boşluk ekler. */
+    display: none; /* Hata mesajını başlangıçta gizler. */
+  }
+  .form-error-msg.show { display: block; } /* Hata mesajını görünür yapar. */
+  .form-success { /* Başarılı gönderim kutusunun görünümünü tanımlar. */
+    display: none; /* Başarı kutusunu başlangıçta gizler. */
+    text-align: center; /* Başarı metnini ortalar. */
+    padding: 2rem; /* Kutunun iç boşluğunu belirler. */
+    color: #2d6a4f; /* Başarı metni rengini belirler. */
+    background: #d8f3dc; /* Başarı arka plan rengini belirler. */
+    border-radius: 12px; /* Başarı kutusunun köşelerini yuvarlatır. */
+    margin-top: 1rem; /* Üstten boşluk ekler. */
+  }
+  .form-success i { /* Başarı ikonunu biçimlendirir. */
+    font-size: 2rem; /* İkon boyutunu büyütür. */
+    display: block; /* İkonu ayrı satırda gösterir. */
+    margin-bottom: 0.7rem; /* İkon altına boşluk verir. */
+  }
+  .form-success.show { display: block; } /* Başarı mesajını görünür yapar. */
+
+  /* Map */
+  .map-wrap { /* Harita alanını yuvarlatılmış ve gölgeli yapar. */
+    margin-top: 4rem; /* Harita alanının üst boşluğunu verir. */
+    border-radius: 16px; /* Harita kutusunun köşelerini yuvarlatır. */
+    overflow: hidden; /* Taşan içeriği gizler. */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12); /* Harita kutusuna gölge ekler. */
+  }
+  .map-wrap iframe { /* Harita iframe ölçülerini ve kenarlıklarını ayarlar. */
+    width: 100%; /* Haritayı konteyner genişliğine uyarlar. */
+    height: 420px; /* Harita yüksekliğini belirler. */
+    border: none; /* Harita kenarlığını kaldırır. */
+    display: block; /* Harita öğesini blok olarak gösterir. */
+  }
+</style>
+</head>
+<body>
+  <header class="navbar" id="navbar"> 
+    <div class="nav-container"> 
+      <a href="index.html" class="nav-logo" aria-label="Amber & Roast Ana Sayfa"> <!-- Logo bağlantısını ana sayfaya yönlendirir. -->
+        <i class="fa-solid fa-mug-hot nav-logo-icon"></i> <!-- Marka ikonunu gösterir. -->
+        <span>Amber <span class="accent">&amp;</span> Roast</span> <!-- Marka adını vurgulu biçimde yazar. -->
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Ana Menü"> <!-- Ana menü bağlantılarını içerir. -->
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a> <!-- Ana sayfaya giden menü bağlantısıdır. -->
+        <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> Hakkımızda</a> <!-- Hakkımızda sayfasına giden bağlantıdır. -->
+        <a href="menu.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menü</a> <!-- Menü sayfasına giden bağlantıdır. -->
+        <a href="contact.html" class="nav-link active"><i class="fa-solid fa-envelope"></i> İletişim</a> <!-- Aktif iletişim sayfasını vurgular. -->
+      </nav>
+      <div class="nav-right"> <!-- Sağ taraftaki arama ve sosyal alanı kapsar. -->
+        <div class="nav-search" id="searchWrapper"> <!-- Arama kutusu ve butonunu içerir. -->
+          <input type="text" id="searchInput" class="search-input" placeholder="Ara…" aria-label="Ara" /> <!-- Arama metni için giriş alanı sağlar. -->
+          <button class="search-btn" id="searchToggle" aria-label="Aramayı aç/kapat"> <!-- Arama alanını açıp kapatan butondur. -->
+            <i class="fa-solid fa-magnifying-glass"></i> <!-- Arama ikonunu gösterir. -->
+          </button>
+        </div>
+        <div class="nav-socials"> <!-- Sosyal medya ikonlarını gruplar. -->
+          <a href="https://www.instagram.com/?hl=tr" class="social-icon" aria-label="Instagram" target="_blank"> <!-- Instagram bağlantısıdır. -->
+            <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gösterir. -->
+          </a>
+
+          <a href="https://www.facebook.com/?locale=tr_TR" class="social-icon" aria-label="Facebook" target="_blank"> <!-- Facebook bağlantısıdır. -->
+            <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gösterir. -->
+          </a>
+
+          <a href="https://x.com/?lang=tr" class="social-icon" aria-label="Twitter" target="_blank"> <!-- Twitter bağlantısıdır. -->
+            <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gösterir. -->
+          </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false"> <!-- Mobil menü açma butonudur. -->
+          <span></span><span></span><span></span> <!-- Hamburger menü çizgilerini çizer. -->
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+
+    <!-- ======================= PAGE BANNER ======================= -->
+    <section class="page-banner"> <!-- Üst sayfa banner alanını tanımlar. -->
+      <h1>Bize <span class="accent">Ulaşın</span></h1> <!-- Banner başlığını vurgulu biçimde gösterir. -->
+      <p>Sizi duymaktan mutluluk duyarız — uğrayın, arayın ya da mesaj gönderin.</p> <!-- Kısa açıklama metni verir. -->
+    </section>
+
+    <!-- ======================= CONTACT SECTION ======================= -->
+    <section class="section" id="contactSection"> <!-- İletişim bölümünü sayfaya ekler. -->
+      <div class="container"> <!-- İçeriği hizalayan genel kapsayıcıdır. -->
+        <div class="contact-layout"> <!-- Sol bilgi ve sağ form düzenini kurar. -->
+
+          <!-- LEFT: Info Cards -->
+          <div class="contact-info"> <!-- Sol tarafta iletişim bilgilerini gösterir. -->
+            <span class="section-tag">Bize Ulaşın</span> <!-- Bölüm etiketini vurgular. -->
+            <h2 class="section-title" style="font-size: 2rem;">Merhaba <span class="accent">Deyin</span></h2> <!-- Bölüm başlığını gösterir. -->
+            <p style="color:#7a6652; line-height:1.8;">
+              Bir sorunuz mu var, catering talebiniz mi ya da sadece kahve hakkında sohbet etmek mi istiyorsunuz? Ekibimiz her zaman bağlantı kurmaktan mutluluk duyar. <!-- İletişim davetini anlatır. -->
+            </p>
+
+            <div class="contact-info-cards"> <!-- İletişim bilgi kartlarını gruplar. -->
+              <div class="info-card"> <!-- Adres kartını oluşturur. -->
+                <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div> <!-- Adres ikonunu gösterir. -->
+                <div class="info-card-text"> <!-- Adres metin alanını kapsar. -->
+                  <h4>Adres</h4> <!-- Kart başlığını belirtir. -->
+                  <p>İstanbul Galata Üniversitesi Piyalepaşa Yerleşkesi,<br />Hacıahmet, Irmak Cd. DLP 1-9, 34440 Beyoğlu/İstanbul</p> <!-- Adres bilgisini yazar. -->
+                </div>
+              </div>
+
+              <div class="info-card"> <!-- Telefon kartını oluşturur. -->
+                <div class="info-card-icon"><i class="fa-solid fa-phone"></i></div> <!-- Telefon ikonunu gösterir. -->
+                <div class="info-card-text"> <!-- Telefon metin alanını kapsar. -->
+                  <h4>Telefon</h4> <!-- Kart başlığını belirtir. -->
+                  <a href="tel:+902121234567">+90 212 123 45 67</a> <!-- Aranabilir telefon bağlantısı verir. -->
+                </div>
+              </div>
+
+              <div class="info-card"> <!-- E-posta kartını oluşturur. -->
+                <div class="info-card-icon"><i class="fa-solid fa-envelope"></i></div> <!-- E-posta ikonunu gösterir. -->
+                <div class="info-card-text"> <!-- E-posta metin alanını kapsar. -->
+                  <h4>E-posta</h4> <!-- Kart başlığını belirtir. -->
+                  <a href="mailto:amberroast@gmail.com">amberroast@gmail.com</a> <!-- Mail göndermek için bağlantı verir. -->
+                </div>
+              </div>
+
+              <div class="info-card"> <!-- Çalışma saatleri kartını oluşturur. -->
+                <div class="info-card-icon"><i class="fa-solid fa-clock"></i></div> <!-- Saat ikonunu gösterir. -->
+                <div class="info-card-text"> <!-- Saatler metin alanını kapsar. -->
+                  <h4>Çalışma Saatleri</h4> <!-- Kart başlığını belirtir. -->
+                  <p>Pzt – Cum: 07:00 – 22:00<br />Cmt: 08:00 – 23:00 · Paz: 09:00 – 21:00</p> <!-- Açılış saatlerini listeler. -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div style="margin-top: 2rem;"> <!-- Sosyal medya bölümüne üst boşluk verir. -->
+              <p style="font-weight:600; color:#1e0f05; margin-bottom:0.8rem;">Bizi Takip Edin</p> <!-- Sosyal medya başlığını gösterir. -->
+              <div class="footer-socials"> <!-- Sosyal bağlantıları bir araya toplar. -->
+                <a href="https://www.instagram.com/?hl=tr" aria-label="Instagram" target="_blank" style="font-size:1.3rem;"> <!-- Instagram bağlantısıdır. -->
+                  <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gösterir. -->
+                </a>
+
+                <a href="https://www.facebook.com/?locale=tr_TR" aria-label="Facebook" target="_blank" style="font-size:1.3rem;"> <!-- Facebook bağlantısıdır. -->
+                  <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gösterir. -->
+                </a>
+
+                <a href="https://x.com/?lang=tr" aria-label="Twitter" target="_blank" style="font-size:1.3rem;"> <!-- Twitter bağlantısıdır. -->
+                  <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gösterir. -->
+                </a>
+
+                <a href="https://www.tiktok.com/tr-TR/" aria-label="TikTok" target="_blank" style="font-size:1.3rem;"> <!-- TikTok bağlantısıdır. -->
+                  <i class="fa-brands fa-tiktok"></i> <!-- TikTok ikonunu gösterir. -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+          
+
+          <!-- RIGHT: Contact Form -->
+          <div class="contact-form-wrap"> <!-- Sağ tarafta iletişim formunu gösterir. -->
+            <h2>Bize <span class="accent">Mesaj Gönderin</span></h2> <!-- Form başlığını vurgular. -->
+
+            <form id="contactForm" novalidate>
+
+              <!-- Name -->
+              <div class="form-group"> <!-- İsim alanını kapsar. -->
+                <label for="contactName"><i class="fa-solid fa-user"></i> Ad Soyad</label> <!-- İsim alanı etiketidir. -->
+                <input type="text" id="contactName" name="name" placeholder="Ayça Demir" autocomplete="name" /> <!-- Ad soyad girişini alır. -->
+                <span class="form-error-msg" id="nameError">Lütfen adınızı ve soyadınızı girin.</span> <!-- İsim hatası mesajını gösterir. -->
+              </div>
+
+              <!-- Email -->
+              <div class="form-group"> <!-- E-posta alanını kapsar. -->
+                <label for="contactEmail"><i class="fa-solid fa-envelope"></i> E-posta Adresi</label> <!-- E-posta alanı etiketidir. -->
+                <input type="email" id="contactEmail" name="email" placeholder="ayca@ornek.com" autocomplete="email" /> <!-- E-posta girişini alır. -->
+                <span class="form-error-msg" id="emailError">Lütfen geçerli bir e-posta adresi girin.</span> <!-- E-posta hatası mesajını gösterir. -->
+              </div>
+
+              <!-- Subject (inline CSS example) -->
+              <div class="form-group"> <!-- Konu alanını kapsar. -->
+                <label for="contactSubject" style="color:#4a3728;"><i class="fa-solid fa-tag"></i> Konu</label> <!-- Konu alanı etiketidir. -->
+                <input type="text" id="contactSubject" name="subject" placeholder="Rezervasyon / Catering / Geri Bildirim…" /> <!-- Konu girişini alır. -->
+                <span class="form-error-msg" id="subjectError">Lütfen bir konu girin.</span> <!-- Konu hatası mesajını gösterir. -->
+              </div>
+
+              <!-- Message -->
+              <div class="form-group"> <!-- Mesaj alanını kapsar. -->
+                <label for="contactMessage"><i class="fa-solid fa-comment-dots"></i> Mesaj</label> <!-- Mesaj alanı etiketidir. -->
+                <textarea id="contactMessage" name="message" placeholder="Aklınızdakileri paylaşın…"></textarea> <!-- Mesaj içeriğini alır. -->
+                <span class="form-error-msg" id="messageError">Lütfen en az 10 karakter içeren bir mesaj girin.</span> <!-- Mesaj hatası mesajını gösterir. -->
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%; justify-content:center;"> <!-- Formu gönderen butondur. -->
+                <i class="fa-solid fa-paper-plane"></i> Mesaj Gönder <!-- Gönder ikonunu ve metnini gösterir. -->
+              </button>
+
+            </form>
+
+            <!-- Success Message -->
+            <div class="form-success" id="formSuccess"> <!-- Başarılı gönderim mesajını içerir. -->
+              <i class="fa-solid fa-circle-check"></i> <!-- Başarı ikonunu gösterir. -->
+              <strong>Mesaj Gönderildi!</strong> <!-- Başarı başlığını vurgular. -->
+              <p style="margin-top:0.5rem; color:#2d6a4f;">Bize ulaştığınız için teşekkürler. 24 saat içinde size geri döneceğiz.</p> <!-- Teşekkür ve dönüş süresini belirtir. -->
+            </div>
+
+          </div><!-- /form-wrap -->
+        </div><!-- /contact-layout -->
+
+        <!-- Google Map Embed -->
+        <div class="map-wrap reveal" style="margin-top: 5rem;"> <!-- Harita alanını görsel efektle gösterir. -->
+          <h2 class="section-title" style="text-align:center; margin-bottom:1.5rem;"> <!-- Harita başlığını ortalar. -->
+            <i class="fa-solid fa-map-location-dot accent-icon"></i> Haritada Bizi Bulun <!-- Harita ikonunu ve başlığını gösterir. -->
+          </h2>
+          <!-- Embedded Google Map — Istanbul -->
+          <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.308739078138!2d28.974613476426327!3d41.040377017447284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7e22f411f39%3A0xce15b0bf4df723bf!2s%C4%B0stanbul%20Galata%20%C3%9Cniversitesi%20Piyalepa%C5%9Fa%20Yerle%C5%9Fkesi!5e0!3m2!1str!2str!4v1777752074115!5m2!1str!2str"
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Amber & Roast konumu Google Haritalar"> <!-- Google Harita çerçevesini tanımlar. -->
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer"> <!-- Sayfanın alt bilgisini tanımlar. -->
+  <div class="container footer-grid"> <!-- Footer içeriğini ızgara olarak düzenler. -->
+    <div class="footer-brand"> <!-- Footer marka alanını gösterir. -->
+      <a href="index.html" class="nav-logo footer-logo"> <!-- Footer logosunu ana sayfaya bağlar. -->
+        <i class="fa-solid fa-mug-hot"></i> <!-- Footer marka ikonunu gösterir. -->
+        <span>Amber <span class="accent">&amp;</span> Roast</span> <!-- Footer marka adını yazar. -->
+      </a>
+      <p class="footer-tagline">Her Yudumda Bir Hikaye Var.</p> <!-- Footer sloganını gösterir. -->
+      <div class="footer-socials"> <!-- Footer sosyal bağlantılarını içerir. -->
+        <a href="https://www.instagram.com/?hl=tr" aria-label="Instagram" target="_blank"> <!-- Instagram bağlantısıdır. -->
+          <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gösterir. -->
+        </a>
+
+        <a href="https://www.facebook.com/?locale=tr_TR" aria-label="Facebook" target="_blank"> <!-- Facebook bağlantısıdır. -->
+          <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gösterir. -->
+        </a>
+
+        <a href="https://x.com/?lang=tr" aria-label="Twitter" target="_blank"> <!-- Twitter bağlantısıdır. -->
+          <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gösterir. -->
+        </a>
+
+        <a href="https://www.tiktok.com/tr-TR/" aria-label="TikTok" target="_blank"> <!-- TikTok bağlantısıdır. -->
+          <i class="fa-brands fa-tiktok"></i> <!-- TikTok ikonunu gösterir. -->
+        </a>
+      </div>
+    </div>
+    <div class="footer-col"> <!-- Hızlı bağlantılar sütununu oluşturur. -->
+      <h4 class="footer-heading">Hızlı Bağlantılar</h4> <!-- Sütun başlığını gösterir. -->
+      <ul> <!-- Baglanti listesini gosterir. -->
+        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Ana Sayfa</a></li>
+        <!-- Ana sayfa linkini yazar. -->
+        <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> Hakkımızda</a></li>
+        <!-- Hakkimizda linkini yazar. -->
+        <li><a href="menu.html"><i class="fa-solid fa-angle-right"></i> Menü</a></li> <!-- Menu linkini yazar. -->
+        <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> İletişim</a></li>
+        <!-- Iletisim linkini yazar. -->
+      </ul>
+    </div>
+    <div class="footer-col"> <!-- Çalışma saatleri sütununu oluşturur. -->
+      <h4 class="footer-heading">Çalışma Saatleri</h4> <!-- Sütun başlığını gösterir. -->
+      <ul class="hours-list">
+        <li><span>Pzt – Cum</span><span>07:00 – 22:00</span></li> <!-- Hafta içi saatlerini gösterir. -->
+        <li><span>Cumartesi</span><span>08:00 – 23:00</span></li> <!-- Cumartesi saatlerini gösterir. -->
+        <li><span>Pazar</span><span>09:00 – 21:00</span></li> <!-- Pazar saatlerini gösterir. -->
+      </ul>
+    </div>
+    <div class="footer-col"> <!-- Footer iletişim sütununu oluşturur. -->
+      <h4 class="footer-heading">Bizi Bulun</h4> <!-- Sütun başlığını gösterir. -->
+      <address> <!-- İletişim bilgilerini semantik olarak tanımlar. -->
+        <p><i class="fa-solid fa-location-dot"></i> İstanbul Galata Üniversitesi Piyalepaşa Yerleşkesi,<br />Hacıahmet, Irmak Cd. DLP 1-9, 34440 Beyoğlu/İstanbul</p> <!-- Adres bilgisini gösterir. -->
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+902121234567">+90 212 123 45 67</a></p> <!-- Telefon bilgisini verir. -->
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:amberroast@gmail.com">amberroast@gmail.com</a></p> <!-- E-posta bilgisini verir. -->
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom"> <!-- Footer alt bandını oluşturur. -->
+    <p>&copy; 2018 Amber &amp; Roast. Tüm hakları saklıdır. | İstanbul'da <i class="fa-solid fa-heart" style="color:#c07c40;"></i> ile tasarlandı</p> <!-- Telif ve tasarım bilgisini verir. -->
+  </div>
+</footer>
+
+<script src="js/script.js"></script> <!-- Site etkileşimleri için JavaScript dosyasını yükler. -->
+</body>
+</html>

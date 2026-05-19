@@ -1,0 +1,356 @@
+<!DOCTYPE html> <!-- HTML5 belgesi oldugunu belirtir. -->
+<html lang="tr"> <!-- Sayfa dilini Turkce olarak belirler. -->
+<head> <!-- Belgeye ait baslik ve kaynak bilgisini tutar. -->
+  <meta charset="UTF-8" /> <!-- UTF-8 karakter setini kullanir. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Mobil gorunum icin olcekleme ayarlar. -->
+  <meta name="description" content="Amber & Roast — el yapımı kahveler, taze tatlılar ve sıcak bir kafe deneyimi." /> <!-- Arama motoru aciklamasini belirler. -->
+  <title>Amber & Roast | Her Yudumda Bir Hikaye</title> <!-- Sekme basligini belirler. -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" /> <!-- Sekme simgesini tanimlar. -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- Fontlar icin erken baglanti kurar. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
+  <!-- preconnect:Font sunucusuna  erken baglanti kurar.Crossorigin: font dosyalarinin CORS kurallariyla yuklenmesini saglar. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /> <!-- Kullanilan fontlari yukler. -->
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> <!-- Ikon kutuphanesini ekler. -->
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css" /> <!-- Ortak site stillerini baglar. -->
+
+  <!-- Internal CSS (page-specific overrides) -->
+  <style> /* Ana sayfaya ozel stil duzenlemelerini tanimlar. */
+  /* Hero section gradient overlay — internal CSS as required */
+  .hero-overlay { /* Hero gradyan katmanini hedefler. */
+    background: linear-gradient( /* Arka plan gradyanini tanimlar. */
+      135deg, /* Gradyan acisini ayarlar. */
+      rgba(30, 15, 5, 0.72) 0%, /* Baslangic rengini tanimlar. */
+      rgba(90, 50, 10, 0.45) 60%, /* Orta ton rengini belirler. */
+      rgba(20, 10, 2, 0.65) 100% /* Bitis rengini belirler. */
+    ); 
+  } 
+
+  /* Scroll-reveal elemanlar sayfada asagi indikce yumusak sekilde ortaya cikiyor */
+  .reveal { /* Scroll-reveal sinifini hedefler. */
+    opacity: 0; /* Baslangic gorunurlugunu gizler. */
+    transform: translateY(40px); /* Asagi kaydirma efekti verir. */
+    transition: opacity 0.7s ease, transform 0.7s ease; /* Gorunur hale gecisi yumusatir. */
+  } 
+  .reveal.visible { /* Gorunur oldugunda uygulanacak stili hedefler. */
+    opacity: 1; /* Opakligi tam yapar. */
+    transform: translateY(0); /* Kaydirma efektini sifirlar. */
+  } 
+</style> 
+</head>
+<body>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="navbar" id="navbar"> <!-- Ust gezinti cubugunu gosterir. -->
+    <div class="nav-container"> <!-- Navbar icerigini sinirlar. -->
+
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo" aria-label="Amber & Roast Ana Sayfa"> <!-- Logo baglantisini ana sayfaya yonlendirir. -->
+        <i class="fa-solid fa-mug-hot nav-logo-icon"></i> <!-- Marka ikonunu gosterir. -->
+        <span>Amber <span class="accent">&amp;</span> Roast</span> <!-- Marka adini yazar. -->
+      </a> 
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links" id="navLinks" aria-label="Ana Menü"> <!-- Ana menu baglantilarini tutar. -->
+        <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Ana Sayfa</a> <!-- Ana sayfa linkini aktif gosterir. -->
+        <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> Hakkımızda</a> <!-- Hakkimizda linkini gosterir. -->
+        <a href="menu.html" class="nav-link"><i class="fa-solid fa-utensils"></i> Menü</a> <!-- Menu linkini gosterir. -->
+        <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> İletişim</a> <!-- Iletisim linkini gosterir. -->
+      </nav> 
+
+      <!-- Search Bar (right side) -->
+      <div class="nav-right"> <!-- Sag taraftaki arama ve ikonlari tutar. -->
+        <div class="nav-search" id="searchWrapper"> <!-- Arama alanini kapsar. -->
+          <input type="text" id="searchInput" class="search-input" placeholder="Ara…" aria-label="Ara" /> <!-- Arama metni girisi verir. -->
+          <button class="search-btn" id="searchToggle" aria-label="Aramayı aç/kapat"> <!-- Arama acma dugmesini gosterir. -->
+            <i class="fa-solid fa-magnifying-glass"></i> <!-- Arama ikonunu gosterir. -->
+          </button> 
+        </div> 
+
+        <!-- Social Icons -->
+        <div class="nav-socials"> <!-- Sosyal ikonlari gosterir. -->
+          <a href="https://www.instagram.com/?hl=tr" class="social-icon" aria-label="Instagram" target="_blank"> <!-- Instagram baglantisini acar. -->
+            <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gosterir. -->
+          </a> 
+
+          <a href="https://www.facebook.com/?locale=tr_TR" class="social-icon" aria-label="Facebook" target="_blank"> <!-- Facebook baglantisini acar. -->
+            <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gosterir. -->
+          </a> 
+
+          <a href="https://x.com/?lang=tr" class="social-icon" aria-label="Twitter" target="_blank"> <!-- Twitter baglantisini acar. -->
+            <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gosterir. -->
+          </a> 
+        </div> 
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false"> <!-- Mobil menu dugmesini gosterir. -->
+          <span></span><span></span><span></span> <!-- Hamburger ikonu cizgilerini cizer. -->
+        </button> 
+      </div> 
+    </div> 
+  </header> 
+
+  <main> 
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="hero"> <!-- Hero alanini gosterir. -->
+      <div class="hero-overlay"></div> <!-- Hero uzerine gradyan katman ekler. -->
+      <img src="img/hero_cafe.png" alt="Amber & Roast kafesinin sıcak ve samimi iç mekanı" class="hero-bg" /> <!-- Hero arka plan gorselini gosterir. -->
+      <div class="hero-content"> <!-- Hero metin icerigini tutar. -->
+        <p class="hero-tagline reveal">2018'den Beri · Özel Kahve</p> <!-- Hero etiket metnini yazar. -->
+        <h1 class="hero-title reveal">Her Yudumda<br /><span class="accent">Bir Hikaye Var</span></h1> <!-- Hero basligini yazar. -->
+        <p class="hero-sub reveal">El yapımı kahveler, özel pastalar ve sıcak anlar — hepsi bir çatı altında.</p> <!-- Hero alt aciklamasini yazar. -->
+        <div class="hero-cta reveal"> <!-- Hero aksiyon butonlarini tutar. -->
+          <a href="menu.html" class="btn btn-primary"><i class="fa-solid fa-mug-hot"></i> Menüyü Gör</a> <!-- Menuye giden butonu gosterir. -->
+          <a href="contact.html" class="btn btn-outline">Bize Ulaşın</a> <!-- Iletisim butonunu gosterir. -->
+        </div> 
+      </div> 
+      <a href="#about" class="hero-scroll-hint"> 
+        <!-- Hero bölümünden Hakkımızda alanına yumuşak kaydırma bağlantısını gösterir. -->
+        <span>Aşağı Kaydır</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section> 
+
+    <!-- ======================= ABOUT ======================= -->
+    <section class="about section" id="about"> <!-- Hakkimizda bolumunu gosterir. -->
+      <div class="container"> <!-- Icerigi ortalayan kapsayici ekler. -->
+        <div class="about-grid"> <!-- Hakkimizda grid duzenini kurar. -->
+
+          <!-- Image Column -->
+          <div class="about-image-wrap reveal"> <!-- Gorsel alanini ve reveal efektini gosterir. -->
+            <img src="img/about_cafe.png" alt="Amber & Roast’ta kahve hazırlayan barista" class="about-img" /> <!-- Hakkimizda gorselini gosterir. -->
+            <div class="about-badge"> <!-- Deneyim rozetini gosterir. -->
+              <span class="badge-number">8</span> <!-- Rozet sayisini yazar. -->
+              <span class="badge-text">Yıllık Deneyim</span> <!-- Rozet metnini yazar. -->
+            </div> 
+          </div> 
+
+          <!-- Text Column -->
+          <div class="about-text reveal"> <!-- Metin alanini ve reveal efektini gosterir. -->
+            <span class="section-tag">Hikayemiz</span> <!-- Bolum etiketi yazar. -->
+            <h2 class="section-title"><span class="accent">Tutku</span> ile Demlendi, Sevgi ile Sunuldu</h2> <!-- Basligi yazar. -->
+            <p>Amber &amp; Roast, istisnai kahveye duyulan saf bir sevgiden doğdu. 2018 yılında Ali Kajeviç tarafından kurulan kafemiz, sevilen bir mahalle buluşma noktasına dönüştü — taze kavrulmuş çekirdeklerin aromasının sessiz sohbetlerle iç içe geçtiği bir yer.</p> <!-- Paragraf metnini yazar. -->
+            <p>Tedarik ettiğimiz her çekirdek etik ticaret kapsamındadır ve tek kökenlidir. Baristalarımız, her fincanı küçük bir sanat eseri olarak ele alan eğitimli uzmanlardır. İster sabah koşturmacasında olun ister öğleden sonra uzun bir mola verin, buradaki zamanınızın evinizde gibi hissettirmesini istiyoruz.</p> <!-- Paragraf metnini yazar. -->
+            <ul class="about-values" style="list-style: none; padding: 0; margin-top: 1.5rem;"> <!-- Degerleri listeleyen alanı kurar. -->
+              <li><i class="fa-solid fa-leaf accent-icon"></i> Etik Kaynaklı Çekirdekler</li> <!-- Liste maddesini yazar. -->
+              <li><i class="fa-solid fa-award accent-icon"></i> Ödüllü Baristalar</li> <!-- Liste maddesini yazar. -->
+              <li><i class="fa-solid fa-heart accent-icon"></i> Topluluk Öncelikli Felsefe</li> <!-- Liste maddesini yazar. -->
+            </ul> 
+            <a href="menu.html" class="btn btn-primary" style="margin-top: 2rem; display: inline-flex;">Menüyü Keşfet <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a> <!-- Menu butonunu gosterir. -->
+          </div> 
+
+        </div> 
+      </div> 
+    </section> 
+
+    <!-- ======================= FEATURED MENU PREVIEW ======================= -->
+    <section class="featured section" id="featured"> <!-- One cikan menu bolumunu gosterir. -->
+      <div class="container"> <!-- Bolum kapsayicisini ekler. -->
+        <div class="section-header reveal"> <!-- Baslik alanini ve reveal efektini gosterir. -->
+          <span class="section-tag">Öne Çıkanlar</span> <!-- Baslik etiketini yazar. -->
+          <h2 class="section-title">En Çok <span class="accent">Sevilen Lezzetler</span></h2> <!-- Bolum basligini yazar. -->
+          <p class="section-sub">Müdavimlerimizi her sabah geri getiren seçkin tatların bir derlemesi.</p> <!-- Alt aciklamayi yazar. -->
+        </div> 
+
+        <!-- Cards Grid -->
+        <div class="menu-cards" id="featuredCards"> <!-- Kart gridini gosterir. -->
+
+          <!-- Card 1 -->
+          <article class="menu-card reveal"> <!-- Menu kartini gosterir. -->
+            <div class="card-img-wrap"> <!-- Kart gorsel sarmalayicisini gosterir. -->
+              <img src="img/menu_cappuccino.png" alt="İmza Cappuccino" class="card-img" /> <!-- Urun gorselini gosterir. -->
+              <div class="card-badge">Çok Satan</div> <!-- Rozet metnini yazar. -->
+            </div> 
+            <div class="card-body"> <!-- Kart govdesini gosterir. -->
+              <h3 class="card-title">İmza Cappuccino</h3> <!-- Kart basligini yazar. -->
+              <p class="card-desc">Zengin çift espresso, kadifemsi buharlı süt ve bir tutam tarçın — en sevilen klasiğimiz.</p> <!-- Kart aciklamasini yazar. -->
+              <span class="card-tag"><i class="fa-solid fa-mug-hot"></i> Sıcak İçecek</span> <!-- Kart etiketini gosterir. -->
+            </div> 
+          </article> 
+
+          <!-- Card 2 -->
+          <article class="menu-card reveal"> <!-- Menu kartini gosterir. -->
+            <div class="card-img-wrap"> <!-- Kart gorsel alanini gosterir. -->
+              <img src="img/menu_iced_latte.png" alt="Karamelli Buzlu Latte" class="card-img" /> <!-- Urun gorselini gosterir. -->
+            </div> 
+            <div class="card-body"> <!-- Kart govdesini gosterir. -->
+              <h3 class="card-title">Karamelli Soğuk Latte</h3> <!-- Kart basligini yazar. -->
+              <p class="card-desc">Buz üzerine soğuk demleme espresso, ev yapımı karamel sos ve yulaf sütü.</p> <!-- Kart aciklamasini yazar. -->
+              <span class="card-tag"><i class="fa-solid fa-ice-cream"></i> Soğuk İçecek</span> <!-- Kart etiketini gosterir. -->
+            </div> 
+          </article> 
+
+          <!-- Card 3 -->
+          <article class="menu-card reveal"> <!-- Menu kartini gosterir. -->
+            <div class="card-img-wrap"> <!-- Kart gorsel alanini gosterir. -->
+              <img src="img/menu_croissant.png" alt="Çikolatalı Kruvasan" class="card-img" /> <!-- Urun gorselini gosterir. -->
+              <div class="card-badge">Şefin Seçimi</div> <!-- Rozet metnini yazar. -->
+            </div> 
+            <div class="card-body"> <!-- Kart govdesini gosterir. -->
+              <h3 class="card-title">Çikolatalı Kruvasan</h3> <!-- Kart basligini yazar. -->
+              <p class="card-desc">Her sabah taze pişirilir, çıtır tereyağlı hamurda Belçika bitter çikolatası ile katman katman.</p> <!-- Kart aciklamasini yazar. -->
+              <span class="card-tag"><i class="fa-solid fa-cookie-bite"></i> Kruvasan</span> <!-- Kart etiketini gosterir. -->
+            </div> 
+          </article> 
+
+          <!-- Card 4 -->
+          <article class="menu-card reveal"> <!-- Menu kartini gosterir. -->
+            <div class="card-img-wrap"> <!-- Kart gorsel alanini gosterir. -->
+              <img src="img/menu_chocolate_cake.png" alt="Bitter Çikolatalı Kek" class="card-img" /> <!-- Urun gorselini gosterir. -->
+            </div> 
+            <div class="card-body"> <!-- Kart govdesini gosterir. -->
+              <h3 class="card-title">Bitter Çikolatalı Kek</h3> <!-- Kart basligini yazar. -->
+              <p class="card-desc">Yoğun, nemli ve vazgeçilmez derecede lezzetli — bir Americano ile mükemmel uyum.</p> <!-- Kart aciklamasini yazar. -->
+              <span class="card-tag"><i class="fa-solid fa-cake-candles"></i> Tatlı</span> <!-- Kart etiketini gosterir. -->
+            </div> 
+          </article> 
+
+          <!-- Card 5 -->
+          <article class="menu-card reveal"> <!-- Menu kartini gosterir. -->
+            <div class="card-img-wrap"> <!-- Kart gorsel alanini gosterir. -->
+              <img src="img/menu_avocado_toast.png" alt="Avokado Tost" class="card-img" /> <!-- Urun gorselini gosterir. -->
+            </div> 
+            <div class="card-body"> <!-- Kart govdesini gosterir. -->
+              <h3 class="card-title">Avokado Tost</h3> <!-- Kart basligini yazar. -->
+              <p class="card-desc">Ekşi maya ekmek üzerine ezilmiş avokado, poşe yumurta, filiz sebzeler ve pul biber.</p> <!-- Kart aciklamasini yazar. -->
+              <span class="card-tag"><i class="fa-solid fa-seedling"></i> Kahvaltı</span> <!-- Kart etiketini gosterir. -->
+            </div> 
+          </article> 
+
+          <!-- Card 6 — CTA -->
+          <article class="menu-card menu-card--cta reveal"> <!-- CTA kartini gosterir. -->
+            <div class="cta-card-inner"> <!-- CTA kart icini gosterir. -->
+              <i class="fa-solid fa-book-open cta-icon"></i> <!-- CTA ikonunu gosterir. -->
+              <h3>Tam Menü</h3> <!-- CTA basligini yazar. -->
+              <p>Tüm el yapımı kahvelerimizi, mevsimlik spesiyallerimizi ve mutfak favorilerimizi keşfedin.</p> <!-- CTA aciklamasini yazar. -->
+              <a href="menu.html" class="btn btn-primary">Tüm Menüyü Gör</a> <!-- Tam menu baglantisini gosterir. -->
+            </div> 
+          </article> 
+
+        </div> 
+      </div> 
+    </section> 
+
+    <!-- ======================= STATS BANNER ======================= -->
+    <!-- Sayfanın istatistik (sayac) bölümünü belirtir -->
+
+    <section class="stats-banner">  <!-- stats-banner bolumunu gosterir. -->
+      <div class="container stats-grid"> <!-- Istatistik gridini ortalar. -->
+        <!-- container ile genislik sinirlanir -->
+        <!-- stats-grid ile kartlar gridde dizilir -->
+
+        <div class="stat-item reveal"> <!-- Istatistik kartini gosterir. -->
+          <!-- stat-item tek bir istatistik kutusudur -->
+          <!-- reveal kaydirma animasyonunu tetikler -->
+
+          <span class="stat-number" data-target="48000">0</span> <!-- Sayac degerini gosterir. -->
+          <!-- stat-number animasyonlu sayidir -->
+          <!-- data-target JS hedef sayiyi belirtir -->
+          <!-- baslangic degeri sifirdir -->
+
+          <span class="stat-suffix">+</span> <!-- Sayi ekini gosterir. -->
+          <!-- stat-suffix sayi yanina ek yazar -->
+
+          <p>Servis Edilen Fincan</p> <!-- Aciklama metnini yazar. -->
+        </div> 
+        <div class="stat-item reveal"> <!-- ikinci istatistik kartini gosterir. -->
+          <span class="stat-number" data-target="14">0</span> <!-- 0'dan 14'e sayar. -->
+          <span class="stat-suffix">+</span> <!-- + isaretini gosterir. -->
+          <p>Menü Ürünü</p> <!-- Aciklama yazar. -->
+        </div> 
+        <div class="stat-item reveal"> <!-- ucuncu istatistik kartini gosterir. -->
+          <span class="stat-number" data-target="8">0</span> <!-- 0'dan 8'e sayar. -->
+          <span class="stat-suffix">+ Yıl</span> <!-- Sayi sonrasina yazi ekler. -->
+          <p>Sektördeyiz</p> <!-- Aciklama yazar. -->
+        </div> 
+        <div class="stat-item reveal"> <!-- dorduncu istatistik kartini gosterir. -->
+          <span class="stat-number" data-target="98">0</span> <!-- 0'dan 98'e sayar. -->
+          <span class="stat-suffix">%</span> <!-- Yuzde isaretini gosterir. -->
+          <p>Mutlu Misafir</p> <!-- Aciklama yazar. -->
+        </div> 
+      </div> 
+    </section> 
+  </main>  
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer" id="footer"> <!-- Footer bolumunu gosterir. -->
+    <div class="container footer-grid"> <!-- Footer gridini olusturur. -->
+
+      <!-- Brand -->
+      <div class="footer-brand"> <!-- Marka alanini gosterir. -->
+        <a href="index.html" class="nav-logo footer-logo"> <!-- Footer logosunu ana sayfaya baglar. -->
+          <i class="fa-solid fa-mug-hot"></i> <!-- Marka ikonunu gosterir. -->
+          <span>Amber <span class="accent">&amp;</span> Roast</span> <!-- Marka adini yazar. -->
+        </a> 
+        <p class="footer-tagline">Her Yudumda Bir Hikaye Var.</p> <!-- Footer sloganini yazar. -->
+        
+        <div class="footer-socials"> <!-- Sosyal ikonlari gosterir. -->
+          <a href="https://www.instagram.com/?hl=tr" aria-label="Instagram" target="_blank"> <!-- Instagram baglantisini acar. -->
+            <i class="fa-brands fa-instagram"></i> <!-- Instagram ikonunu gosterir. -->
+          </a> 
+
+          <a href="https://www.facebook.com/?locale=tr_TR" aria-label="Facebook" target="_blank"> <!-- Facebook baglantisini acar. -->
+            <i class="fa-brands fa-facebook-f"></i> <!-- Facebook ikonunu gosterir. -->
+          </a> 
+
+          <a href="https://x.com/?lang=tr" aria-label="Twitter" target="_blank"> <!-- Twitter baglantisini acar. -->
+            <i class="fa-brands fa-x-twitter"></i> <!-- Twitter ikonunu gosterir. -->
+          </a> 
+
+          <a href="https://www.tiktok.com/tr-TR/" aria-label="TikTok" target="_blank"> <!-- TikTok baglantisini acar. -->
+            <i class="fa-brands fa-tiktok"></i> <!-- TikTok ikonunu gosterir. -->
+          </a> 
+        </div> 
+      </div> 
+
+
+      <!-- Quick Links (Hızlı bağlantılar bölümü) -->
+      <div class="footer-col"> <!-- Hizli baglantilar sutununu gosterir. -->
+        <h4 class="footer-heading">Hızlı Bağlantılar</h4> <!-- Sutun basligini yazar. -->
+        <ul> <!-- Baglanti listesini gosterir. -->
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Ana Sayfa</a></li>
+          <!-- Ana sayfa linkini yazar. -->
+          <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> Hakkımızda</a></li>
+          <!-- Hakkimizda linkini yazar. -->
+          <li><a href="menu.html"><i class="fa-solid fa-angle-right"></i> Menü</a></li> <!-- Menu linkini yazar. -->
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> İletişim</a></li>
+          <!-- Iletisim linkini yazar. -->
+        </ul>
+      </div> 
+
+      <!-- Opening Hours (Çalışma saatleri bölümü) -->
+      <div class="footer-col"> <!-- Calisma saatleri sutununu gosterir. -->
+        <h4 class="footer-heading">Çalışma Saatleri</h4> <!-- Sutun basligini yazar. -->
+        <ul class="hours-list"> <!-- Saatler listesini gosterir. -->
+          <li><span>Pzt – Cum</span><span>07:00 – 22:00</span></li> <!-- Hafta ici saatlerini yazar. -->
+          <li><span>Cumartesi</span><span>08:00 – 23:00</span></li> <!-- Cumartesi saatlerini yazar. -->
+          <li><span>Pazar</span><span>09:00 – 21:00</span></li> <!-- Pazar saatlerini yazar. -->
+        </ul> 
+      </div> 
+
+      <!-- Address & Contact -->
+      <div class="footer-col"> <!-- Adres ve iletisim sutununu gosterir. -->
+        <h4 class="footer-heading">Bizi Bulun</h4> <!-- Sutun basligini yazar. -->
+        <address> <!-- Adres bilgilerini semantik olarak belirtir. -->
+          <p><i class="fa-solid fa-location-dot"></i> İstanbul Galata Üniversitesi Piyalepaşa Yerleşkesi,<br />Hacıahmet, Irmak Cd. DLP 1-9, 34440 Beyoğlu/İstanbul</p> <!-- Adres satirini yazar. -->
+          <p><i class="fa-solid fa-phone"></i> <a href="tel:+902121234567">+90 212 123 45 67</a></p> <!-- Telefon bilgisini yazar. -->
+          <p><i class="fa-solid fa-envelope"></i> <a href="mailto:amberroast@gmail.com">amberroast@gmail.com</a></p> <!-- E-posta bilgisini yazar. -->
+        </address> 
+      </div> 
+
+    </div> 
+
+    <div class="footer-bottom"> <!-- Footer alt bandini gosterir. -->
+      <p>&copy; 2018 Amber &amp; Roast. Tüm hakları saklıdır. | İstanbul'da <i class="fa-solid fa-heart" style="color:#c07c40;"></i> ile tasarlandı</p> <!-- Telif bilgisini yazar. -->
+    </div> 
+  </footer> 
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script> <!-- JavaScript dosyasini yukler. -->
+</body>
+</html>
